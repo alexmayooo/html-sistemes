@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayZone - Juegos Online</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f5fb;
+            color: #222;
+        }
+
+        /* BARRA SUPERIOR */
+        header {
+            background: #ffffff;
+            padding: 16px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 2px 10px #00000010;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #6554f0;
+            white-space: nowrap;
+        }
+
+        .buscador {
+            width: 45%;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 25px;
+            background: #f0f0f7;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .boton {
+            background: #6554f0;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background: #4938d5;
+        }
+
+        /* CONTENIDO */
+        main {
+            max-width: 1400px;
+            margin: auto;
+            padding: 30px 5%;
+        }
+
+        .bienvenida {
+            background: linear-gradient(120deg, #6554f0, #a45af5);
+            color: white;
+            border-radius: 22px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+
+        .bienvenida h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .bienvenida p {
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .bienvenida button {
+            background: white;
+            color: #6554f0;
+        }
+
+        /* CATEGORÍAS */
+        .categorias {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 5px 0 20px;
+        }
+
+        .categoria {
+            padding: 12px 20px;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .categoria:hover,
+        .categoria.activa {
+            background: #e8e5ff;
+            border-color: #6554f0;
+            color: #5140db;
+        }
+
+        /* TÍTULO DE SECCIÓN */
+        .titulo-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 25px;
+        }
+
+        /* TARJETAS DE JUEGOS */
+        .juegos {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .juego {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .juego:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px #00000015;
+        }
+
+        .imagen-juego {
+            height: 155px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+        }
+
+        .juego-info {
+            padding: 15px;
+        }
+
+        .juego-info h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .juego-info p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #efedff;
+            color: #6554f0;
+            padding: 5px 9px;
+            border-radius: 8px;
+            font-size: 11px;
+            margin-top: 10px;
+        }
+
+        /* COLORES DE LAS TARJETAS */
+        .fondo1 { background: #ffdd8a; }
+        .fondo2 { background: #a7e9d1; }
+        .fondo3 { background: #ffc2cf; }
+        .fondo4 { background: #b9caff; }
+        .fondo5 { background: #d9c1ff; }
+        .fondo6 { background: #ffca96; }
+        .fondo7 { background: #b6e4ff; }
+        .fondo8 { background: #f5b9ec; }
+
+        /* VENTANA DEL JUEGO */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #000000bb;
+            z-index: 20;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-contenido {
+            background: white;
+            width: 100%;
+            max-width: 750px;
+            min-height: 300px;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .modal-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .cerrar {
+            font-size: 28px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        #zonaJuego {
+            padding: 35px 10px;
+            background: #f4f5fb;
+            border-radius: 15px;
+        }
+
+        #zonaJuego button {
+            margin: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        /* DISEÑO PARA MÓVILES */
+        @media (max-width: 900px) {
+            .juegos {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .buscador {
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .buscador {
+                width: 100%;
+                order: 3;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            .bienvenida {
+                padding: 25px;
+            }
+
+            .bienvenida h1 {
+                font-size: 28px;
+            }
+
+            .juegos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .imagen-juego {
+                height: 120px;
+                font-size: 48px;
+            }
+
+            .juego-info {
+                padding: 12px;
+            }
+
+            .titulo-seccion h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🎮 PlayZone</div>
+
+        <input
+            type="text"
+            id="buscador"
+            class="buscador"
+            placeholder="🔎 Buscar juegos..."
+            oninput="filtrarJuegos()"
+        >
+
+        <button class="boton" onclick="mostrarTodos()">
+            Explorar
+        </button>
+    </header>
+
+    <main>
+
+        <section class="bienvenida">
+            <h1>¡Juega sin límites! 🎉</h1>
+            <p>Descubre juegos increíbles y diviértete directamente desde tu navegador.</p>
+            <button class="boton" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">
+                Descubrir juegos →
+            </button>
+        </section>
+
+        <div class="categorias">
+            <button class="categoria activa" onclick="filtrarCategoria('Todos', this)">🎮 Todos</button>
+            <button class="categoria" onclick="filtrarCategoria('Acción', this)">⚔️ Acción</button>
+            <button class="categoria" onclick="filtrarCategoria('Carreras', this)">🏎️ Carreras</button>
+            <button class="categoria" onclick="filtrarCategoria('Aventura', this)">🗺️ Aventura</button>
+            <button class="categoria" onclick="filtrarCategoria('Puzzle', this)">🧩 Puzzle</button>
+            <button class="categoria" onclick="filtrarCategoria('Deportes', this)">⚽ Deportes</button>
+        </div>
+
+        <section id="catalogo">
+            <div class="titulo-seccion">
+                <h2>🔥 Juegos populares</h2>
+                <span id="contador">8 juegos</span>
+            </div>
+
+            <div class="juegos" id="listaJuegos">
+
+                <article class="juego" data-nombre="aventura espacial" data-categoria="Aventura" onclick="abrirJuego('Aventura espacial')">
+                    <div class="imagen-juego fondo1">🚀</div>
+                    <div class="juego-info">
+                        <h3>Aventura espacial</h3>
+                        <p>Explora el universo</p>
+                        <span class="etiqueta">Aventura</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="super carreras" data-categoria="Carreras" onclick="abrirJuego('Super carreras')">
+                    <div class="imagen-juego fondo2">🏎️</div>
+                    <div class="juego-info">
+                        <h3>Super carreras</h3>
+                        <p>Corre hasta la meta</p>
+                        <span class="etiqueta">Carreras</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="ninja fighter" data-categoria="Acción" onclick="abrirJuego('Ninja Fighter')">
+                    <div class="imagen-juego fondo3">🥷</div>
+                    <div class="juego-info">
+                        <h3>Ninja Fighter</h3>
+                        <p>Conviértete en un ninja</p>
+                        <span class="etiqueta">Acción</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="rompecabezas" data-categoria="Puzzle" onclick="abrirJuego('Rompecabezas')">
+                    <div class="imagen-juego fondo4">🧩</div>
+                    <div class="juego-info">
+                        <h3>Rompecabezas</h3>
+                        <p>Entrena tu mente</p>
+                        <span class="etiqueta">Puzzle</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="fútbol extremo" data-categoria="Deportes" onclick="abrirJuego('Fútbol extremo')">
+                    <div class="imagen-juego fondo5">⚽</div>
+                    <div class="juego-info">
+                        <h3>Fútbol extremo</h3>
+                        <p>Marca el gol ganador</p>
+                        <span class="etiqueta">Deportes</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="mundo minecraft" data-categoria="Aventura" onclick="abrirJuego('Mundo Minecraft')">
+                    <div class="imagen-juego fondo6">⛏️</div>
+                    <div class="juego-info">
+                        <h3>Mundo cúbico</h3>
+                        <p>Construye tu mundo</p>
+                        <span class="etiqueta">Aventura</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="zombis" data-categoria="Acción" onclick="abrirJuego('Zombis')">
+                    <div class="imagen-juego fondo7">🧟</div>
+                    <div class="juego-info">
+                        <h3>Invasión zombi</h3>
+                        <p>Sobrevive a la invasión</p>
+                        <span class="etiqueta">Acción</span>
+                    </div>
+                </article>
+
+                <article class="juego" data-nombre="memoria" data-categoria="Puzzle" onclick="abrirJuego('Memoria')">
+                    <div class="imagen-juego fondo8">🧠</div>
+                    <div class="juego-info">
+                        <h3>Memoria</h3>
+                        <p>Encuentra las parejas</p>
+                        <span class="etiqueta">Puzzle</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-contenido">
+            <div class="modal-cabecera">
+                <h2 id="tituloJuego">Juego</h2>
+                <button class="cerrar" onclick="cerrarJuego()">×</button>
+            </div>
+
+            <div id="zonaJuego">
+                <p id="descripcionJuego"></p>
+                <br>
+                <button class="boton" onclick="iniciarMiniJuego()">
+                    ¡Jugar ahora!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🎮 PlayZone © 2026 - Tu mundo de juegos online</p>
+        <p style="margin-top: 8px;">Hecho para divertirse.</p>
+    </footer>
+
+    <script>
+        let categoriaActual = "Todos";
+        let juegoActual = "";
+
+        function filtrarJuegos() {
+            const texto = document.getElementById("buscador").value.toLowerCase();
+            const juegos = document.querySelectorAll(".juego");
+            let visibles = 0;
+
+            juegos.forEach(function(juego) {
+                const nombre = juego.dataset.nombre;
+                const categoria = juego.dataset.categoria;
+
+                const coincideTexto = nombre.includes(texto);
+                const coincideCategoria =
+                    categoriaActual === "Todos" ||
+                    categoria === categoriaActual;
+
+                if (coincideTexto && coincideCategoria) {
+                    juego.style.display = "";
+                    visibles++;
+                } else {
+                    juego.style.display = "none";
+                }
+            });
+
+            document.getElementById("contador").textContent =
+                visibles + (visibles === 1 ? " juego" : " juegos");
+        }
+
+        function filtrarCategoria(categoria, boton) {
+            categoriaActual = categoria;
+
+            document.querySelectorAll(".categoria").forEach(function(elemento) {
+                elemento.classList.remove("activa");
+            });
+
+            boton.classList.add("activa");
+            filtrarJuegos();
+        }
+
+        function mostrarTodos() {
+            categoriaActual = "Todos";
+            document.getElementById("buscador").value = "";
+
+            document.querySelectorAll(".categoria").forEach(function(elemento) {
+                elemento.classList.remove("activa");
+            });
+
+            document.querySelector(".categoria").classList.add("activa");
+            filtrarJuegos();
+
+            document.getElementById("catalogo").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        function abrirJuego(nombre) {
+            juegoActual = nombre;
+
+            document.getElementById("tituloJuego").textContent = nombre;
+            document.getElementById("descripcionJuego").textContent =
+                "¡Prepárate para jugar a " + nombre + "!";
+
+            document.getElementById("zonaJuego").innerHTML = `
+                <p id="descripcionJuego">¡Prepárate para jugar a ${nombre}!</p>
+                <br>
+                <button class="boton" onclick="iniciarMiniJuego()">
+                    ¡Jugar ahora!
+                </button>
+            `;
+
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function cerrarJuego() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function iniciarMiniJuego() {
+            const zona = document.getElementById("zonaJuego");
+
+            if (juegoActual === "Memoria") {
+                zona.innerHTML = `
+                    <h3>Encuentra la pareja</h3>
+                    <p>Memoriza los símbolos y encuentra los dos iguales.</p>
+                    <br>
+                    <div id="cartas" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:400px;margin:auto"></div>
+                    <p id="resultadoMemoria" style="margin-top:15px"></p>
+                    <br>
+                    <button class="boton" onclick="iniciarMiniJuego()">Reiniciar</button>
+                `;
+
+                const simbolos = ["🐶", "🐱", "🐶", "🐱"];
+                simbolos.sort(() => Math.random() - 0.5);
+
+                const cartas = document.getElementById("cartas");
+                let abiertas = [];
+                let parejas = 0;
+                let bloqueado = false;
+
+                simbolos.forEach(function(simbolo) {
+                    const carta = document.createElement("button");
+                    carta.textContent = "❔";
+                    carta.style.cssText =
+                        "font-size:30px;padding:15px 5px;border:0;border-radius:10px;cursor:pointer;background:#e8e5ff";
+
+                    carta.onclick = function() {
+                        if (bloqueado || carta.dataset.abierta === "si") return;
+
+                        carta.textContent = simbolo;
+                        carta.dataset.abierta = "si";
+                        abiertas.push(carta);
+
+                        if (abiertas.length === 2) {
+                            if (abiertas[0].textContent === abiertas[1].textContent) {
+                                parejas++;
+                                abiertas = [];
+
+                                if (parejas === 2) {
+                                    document.getElementById("resultadoMemoria").textContent =
+                                        "¡Has ganado! 🎉";
+                                }
+                            } else {
+                                bloqueado = true;
+                                setTimeout(function() {
+                                    abiertas.forEach(function(c) {
+                                        c.textContent = "❔";
+                                        c.dataset.abierta = "no";
+                                    });
+                                    abiertas = [];
+                                    bloqueado = false;
+                                }, 700);
+                            }
+                        }
+                    };
+
+                    cartas.appendChild(carta);
+                });
+
+            } else {
+                let numero = Math.floor(Math.random() * 10) + 1;
+
+                zona.innerHTML = `
+                    <h3>🎯 ¡Adivina el número!</h3>
+                    <p>Estoy pensando en un número del 1 al 10.</p>
+                    <br>
+                    <input type="number" id="respuesta" min="1" max="10"
+                        placeholder="Tu número"
+                        style="padding:12px;width:150px;border:1px solid #ccc;border-radius:10px">
+                    <button class="boton" onclick="comprobarNumero(${numero})">Probar</button>
+                    <p id="resultadoNumero" style="margin-top:20px"></p>
+                `;
+            }
+        }
+
+        function comprobarNumero(numeroCorrecto) {
+            const respuesta = Number(document.getElementById("respuesta").value);
+            const resultado = document.getElementById("resultadoNumero");
+
+            if (respuesta < 1 || respuesta > 10 ||
+                document.getElementById("respuesta").value === "") {
+                resultado.textContent = "Introduce un número del 1 al 10.";
+            } else if (respuesta === numeroCorrecto) {
+                resultado.textContent = "¡Correcto! ¡Has ganado! 🎉";
+            } else if (respuesta < numeroCorrecto) {
+                resultado.textContent = "Prueba con un número más alto.";
+            } else {
+                resultado.textContent = "Prueba con un número más bajo.";
+            }
+        }
+
+        document.getElementById("modal").addEventListener("click", function(evento) {
+            if (evento.target === this) {
+                cerrarJuego();
+            }
+        });
+    </script>
+
+</body>
+</html>
