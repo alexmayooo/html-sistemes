@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="PlayZone, tu portal de juegos online gratuitos. Descubre juegos de acción, carreras, aventura, deportes y mucho más.">
+
+    <title>PlayZone | Juegos Online Gratis</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="cabecera">
+
+        <div class="contenedor-cabecera">
+
+            <div class="logo">
+                <a href="#inicio" aria-label="PlayZone, página de inicio">
+                    <span>🎮</span> PlayZone
+                </a>
+            </div>
+
+            <nav class="navegacion" aria-label="Navegación principal">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#populares">Populares</a></li>
+                    <li><a href="#nuevos">Novedades</a></li>
+                </ul>
+            </nav>
+
+            <div class="zona-buscador">
+                <form action="#" method="get" role="search">
+                    <label for="buscar-juego" class="oculto">
+                        Buscar un juego
+                    </label>
+
+                    <input
+                        type="search"
+                        id="buscar-juego"
+                        name="buscar"
+                        placeholder="Buscar juegos..."
+                    >
+
+                    <button type="submit" aria-label="Buscar">
+                        🔍
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <!-- PRESENTACIÓN -->
+        <section id="inicio" class="hero">
+
+            <div class="hero-contenido">
+
+                <span class="hero-etiqueta">
+                    🎉 TU DIVERSIÓN EMPIEZA AQUÍ
+                </span>
+
+                <h1>Descubre tu próximo juego favorito</h1>
+
+                <p>
+                    Explora una gran colección de juegos online,
+                    encuentra nuevos desafíos y diviértete
+                    directamente desde tu navegador.
+                </p>
+
+                <div class="hero-botones">
+                    <a href="#populares" class="boton boton-principal">
+                        Explorar juegos
+                    </a>
+
+                    <a href="#categorias" class="boton boton-secundario">
+                        Ver categorías
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-imagen" aria-label="Zona de videojuegos">
+                <span>🎮</span>
+                <span>🏎️</span>
+                <span>🕹️</span>
+                <span>👾</span>
+            </div>
+
+        </section>
+
+
+        <!-- ACCESOS RÁPIDOS -->
+        <section class="ventajas" aria-label="Ventajas de PlayZone">
+
+            <article class="ventaja">
+                <span>⚡</span>
+                <div>
+                    <h3>Acceso rápido</h3>
+                    <p>Juega desde tu navegador.</p>
+                </div>
+            </article>
+
+            <article class="ventaja">
+                <span>🎯</span>
+                <div>
+                    <h3>Muchos géneros</h3>
+                    <p>Encuentra juegos para todos los gustos.</p>
+                </div>
+            </article>
+
+            <article class="ventaja">
+                <span>🆕</span>
+                <div>
+                    <h3>Nuevos desafíos</h3>
+                    <p>Descubre juegos diferentes.</p>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- CATEGORÍAS -->
+        <section id="categorias" class="seccion categorias">
+
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="subtitulo">ENCUENTRA TU ESTILO</span>
+                    <h2>Explora las categorías</h2>
+                </div>
+
+                <p>
+                    Elige el tipo de juego que más te guste.
+                </p>
+            </div>
+
+            <div class="rejilla-categorias">
+
+                <a href="#accion" class="tarjeta-categoria categoria-accion">
+                    <span class="icono-categoria">⚔️</span>
+                    <h3>Acción</h3>
+                    <p>Combates y desafíos</p>
+                </a>
+
+                <a href="#carreras" class="tarjeta-categoria categoria-carreras">
+                    <span class="icono-categoria">🏎️</span>
+                    <h3>Carreras</h3>
+                    <p>Velocidad y competición</p>
+                </a>
+
+                <a href="#aventura" class="tarjeta-categoria categoria-aventura">
+                    <span class="icono-categoria">🗺️</span>
+                    <h3>Aventura</h3>
+                    <p>Explora nuevos mundos</p>
+                </a>
+
+                <a href="#puzzles" class="tarjeta-categoria categoria-puzzles">
+                    <span class="icono-categoria">🧩</span>
+                    <h3>Puzles</h3>
+                    <p>Entrena tu mente</p>
+                </a>
+
+                <a href="#deportes" class="tarjeta-categoria categoria-deportes">
+                    <span class="icono-categoria">⚽</span>
+                    <h3>Deportes</h3>
+                    <p>Compite y gana</p>
+                </a>
+
+                <a href="#estrategia" class="tarjeta-categoria categoria-estrategia">
+                    <span class="icono-categoria">🧠</span>
+                    <h3>Estrategia</h3>
+                    <p>Piensa cada movimiento</p>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- JUEGOS POPULARES -->
+        <section id="populares" class="seccion">
+
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="subtitulo">LOS FAVORITOS</span>
+                    <h2>🔥 Juegos populares</h2>
+                </div>
+
+                <a href="#catalogo" class="enlace-seccion">
+                    Ver todos →
+                </a>
+            </div>
+
+            <div class="rejilla-juegos">
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-carreras" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-carreras">
+                            <span class="icono-juego">🏎️</span>
+                            <span class="insignia">POPULAR</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Super carreras</h3>
+                            <p>Compite y llega el primero a la meta.</p>
+
+                            <div class="detalles-juego">
+                                <span>🏁 Carreras</span>
+                                <span>⭐ Destacado</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-aventura" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-aventura">
+                            <span class="icono-juego">🗺️</span>
+                            <span class="insignia">DESTACADO</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Mundo de aventuras</h3>
+                            <p>Explora lugares misteriosos y descubre secretos.</p>
+
+                            <div class="detalles-juego">
+                                <span>🌍 Aventura</span>
+                                <span>🎮 Exploración</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-ninja" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-accion">
+                            <span class="icono-juego">🥷</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Ninja Fighter</h3>
+                            <p>Demuestra tus habilidades y supera cada combate.</p>
+
+                            <div class="detalles-juego">
+                                <span>⚔️ Acción</span>
+                                <span>🔥 Desafío</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-puzzle" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-puzzle">
+                            <span class="icono-juego">🧩</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Desafío mental</h3>
+                            <p>Resuelve acertijos y completa todos los niveles.</p>
+
+                            <div class="detalles-juego">
+                                <span>🧠 Puzles</span>
+                                <span>💡 Lógica</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- BANNER PROMOCIONAL -->
+        <section class="banner">
+
+            <div class="banner-contenido">
+                <span>🚀 ¿PREPARADO PARA EL RETO?</span>
+
+                <h2>Siempre hay una nueva partida esperándote</h2>
+
+                <p>
+                    Descubre diferentes géneros y encuentra
+                    el juego perfecto para ti.
+                </p>
+
+                <a href="#nuevos" class="boton boton-claro">
+                    Descubrir novedades
+                </a>
+            </div>
+
+            <div class="banner-icono" aria-hidden="true">
+                👾
+            </div>
+
+        </section>
+
+
+        <!-- NOVEDADES -->
+        <section id="nuevos" class="seccion">
+
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="subtitulo">RECIÉN LLEGADOS</span>
+                    <h2>🆕 Últimos juegos</h2>
+                </div>
+
+                <a href="#catalogo" class="enlace-seccion">
+                    Explorar catálogo →
+                </a>
+            </div>
+
+            <div class="rejilla-juegos">
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-espacial" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-espacial">
+                            <span class="icono-juego">🚀</span>
+                            <span class="insignia insignia-nuevo">NUEVO</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Aventura espacial</h3>
+                            <p>Viaja por la galaxia y explora planetas.</p>
+
+                            <div class="detalles-juego">
+                                <span>🌌 Aventura</span>
+                                <span>🆕 Novedad</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-futbol" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-deportes">
+                            <span class="icono-juego">⚽</span>
+                            <span class="insignia insignia-nuevo">NUEVO</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Fútbol extremo</h3>
+                            <p>Marca goles y lleva a tu equipo a la victoria.</p>
+
+                            <div class="detalles-juego">
+                                <span>⚽ Deportes</span>
+                                <span>🏆 Competición</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-zombis" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-zombis">
+                            <span class="icono-juego">🧟</span>
+                            <span class="insignia insignia-nuevo">NUEVO</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Invasión zombi</h3>
+                            <p>Sobrevive, consigue recursos y escapa.</p>
+
+                            <div class="detalles-juego">
+                                <span>🧟 Acción</span>
+                                <span>🎯 Supervivencia</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+
+                <article class="tarjeta-juego">
+                    <a href="#juego-memoria" class="enlace-juego">
+
+                        <div class="imagen-juego imagen-memoria">
+                            <span class="icono-juego">🧠</span>
+                            <span class="insignia insignia-nuevo">NUEVO</span>
+                        </div>
+
+                        <div class="datos-juego">
+                            <h3>Juego de memoria</h3>
+                            <p>Encuentra las parejas y mejora tu concentración.</p>
+
+                            <div class="detalles-juego">
+                                <span>🧩 Puzles</span>
+                                <span>💡 Habilidad</span>
+                            </div>
+                        </div>
+
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATÁLOGO COMPLETO -->
+        <section id="catalogo" class="seccion catalogo">
+
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="subtitulo">ENCUENTRA TU PRÓXIMO RETO</span>
+                    <h2>🎮 Explora el catálogo</h2>
+                </div>
+            </div>
+
+            <div class="lista-catalogo">
+
+                <article id="juego-carreras" class="fila-juego">
+                    <span class="fila-icono">🏎️</span>
+                    <div>
+                        <h3>Super carreras</h3>
+                        <p>Juegos de velocidad y conducción.</p>
+                    </div>
+                    <span class="fila-categoria">Carreras</span>
+                </article>
+
+                <article id="juego-aventura" class="fila-juego">
+                    <span class="fila-icono">🗺️</span>
+                    <div>
+                        <h3>Mundo de aventuras</h3>
+                        <p>Explora mundos y descubre secretos.</p>
+                    </div>
+                    <span class="fila-categoria">Aventura</span>
+                </article>
+
+                <article id="juego-ninja" class="fila-juego">
+                    <span class="fila-icono">🥷</span>
+                    <div>
+                        <h3>Ninja Fighter</h3>
+                        <p>Combate y supera diferentes desafíos.</p>
+                    </div>
+                    <span class="fila-categoria">Acción</span>
+                </article>
+
+                <article id="juego-puzzle" class="fila-juego">
+                    <span class="fila-icono">🧩</span>
+                    <div>
+                        <h3>Desafío mental</h3>
+                        <p>Resuelve acertijos y entrena tu lógica.</p>
+                    </div>
+                    <span class="fila-categoria">Puzles</span>
+                </article>
+
+                <article id="juego-espacial" class="fila-juego">
+                    <span class="fila-icono">🚀</span>
+                    <div>
+                        <h3>Aventura espacial</h3>
+                        <p>Explora planetas y viaja por el espacio.</p>
+                    </div>
+                    <span class="fila-categoria">Aventura</span>
+                </article>
+
+                <article id="juego-futbol" class="fila-juego">
+                    <span class="fila-icono">⚽</span>
+                    <div>
+                        <h3>Fútbol extremo</h3>
+                        <p>Compite, marca goles y gana partidos.</p>
+                    </div>
+                    <span class="fila-categoria">Deportes</span>
+                </article>
+
+                <article id="juego-zombis" class="fila-juego">
+                    <span class="fila-icono">🧟</span>
+                    <div>
+                        <h3>Invasión zombi</h3>
+                        <p>Sobrevive en un mundo lleno de peligros.</p>
+                    </div>
+                    <span class="fila-categoria">Acción</span>
+                </article>
+
+                <article id="juego-memoria" class="fila-juego">
+                    <span class="fila-icono">🧠</span>
+                    <div>
+                        <h3>Juego de memoria</h3>
+                        <p>Encuentra parejas y supera tus marcas.</p>
+                    </div>
+                    <span class="fila-categoria">Puzles</span>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- DESCRIPCIÓN DE CATEGORÍAS -->
+        <section class="seccion informacion-categorias">
+
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="subtitulo">HAY UN JUEGO PARA TI</span>
+                    <h2>Descubre todos los géneros</h2>
+                </div>
+            </div>
+
+            <div class="rejilla-informacion">
+
+                <article id="accion" class="bloque-informacion">
+                    <span>⚔️</span>
+                    <h3>Juegos de acción</h3>
+                    <p>
+                        Pon a prueba tus reflejos, enfréntate a enemigos
+                        y supera emocionantes desafíos.
+                    </p>
+                </article>
+
+                <article id="carreras" class="bloque-informacion">
+                    <span>🏎️</span>
+                    <h3>Juegos de carreras</h3>
+                    <p>
+                        Pisa el acelerador, domina los circuitos
+                        y demuestra quién es el más rápido.
+                    </p>
+                </article>
+
+                <article id="aventura" class="bloque-informacion">
+                    <span>🗺️</span>
+                    <h3>Juegos de aventura</h3>
+                    <p>
+                        Explora lugares desconocidos, descubre historias
+                        y encuentra tesoros ocultos.
+                    </p>
+                </article>
+
+                <article id="puzzles" class="bloque-informacion">
+                    <span>🧩</span>
+                    <h3>Juegos de puzles</h3>
+                    <p>
+                        Entrena tu mente con acertijos, rompecabezas
+                        y problemas de lógica.
+                    </p>
+                </article>
+
+                <article id="deportes" class="bloque-informacion">
+                    <span>⚽</span>
+                    <h3>Juegos de deportes</h3>
+                    <p>
+                        Participa en competiciones, marca puntos
+                        y demuestra tus habilidades deportivas.
+                    </p>
+                </article>
+
+                <article id="estrategia" class="bloque-informacion">
+                    <span>🧠</span>
+                    <h3>Juegos de estrategia</h3>
+                    <p>
+                        Planifica tus movimientos, administra recursos
+                        y encuentra la mejor estrategia para ganar.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+
+        <div class="contenido-footer">
+
+            <div class="footer-marca">
+                <a href="#inicio" class="logo-footer">
+                    🎮 PlayZone
+                </a>
+
+                <p>
+                    Tu espacio para descubrir juegos,
+                    superar retos y divertirte online.
+                </p>
+            </div>
+
+
+            <div class="footer-enlaces">
+                <h3>Navegación</h3>
+
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#populares">Juegos populares</a></li>
+                    <li><a href="#nuevos">Novedades</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-enlaces">
+                <h3>Información</h3>
+
+                <ul>
+                    <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#privacidad">Privacidad</a></li>
+                    <li><a href="#condiciones">Condiciones de uso</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+
+                <div class="redes-sociales">
+                    <a href="#" aria-label="Instagram">📸</a>
+                    <a href="#" aria-label="YouTube">▶️</a>
+                    <a href="#" aria-label="Discord">💬</a>
+                </div>
+
+                <p>¡No te pierdas las novedades!</p>
+            </div>
+
+        </div>
+
+
+        <div class="footer-inferior">
+            <p>
+                &copy; 2026 PlayZone. Todos los derechos reservados.
+            </p>
+
+            <a href="#inicio">Volver arriba ↑</a>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
+
