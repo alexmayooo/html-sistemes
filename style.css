@@ -1,0 +1,1354 @@
+
+/* ========================================
+   1. CONFIGURACIÓ GENERAL
+======================================== */
+
+:root {
+    --fons: #0b0d19;
+    --fons-secundari: #121629;
+    --targeta: #171c32;
+    --targeta-hover: #202743;
+    --morado: #8757ff;
+    --morado-clar: #a98bff;
+    --cian: #46e6e0;
+    --blanc: #f5f6ff;
+    --text-secundari: #a8b0ca;
+    --vora: rgba(169, 139, 255, 0.18);
+    --radi: 16px;
+    --amplada: 1240px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fons);
+    color: var(--blanc);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--cian);
+    outline-offset: 4px;
+}
+
+::selection {
+    background: var(--morado);
+    color: white;
+}
+
+main {
+    width: min(var(--amplada), 92%);
+    margin: 0 auto;
+}
+
+.seccion {
+    margin: 85px 0;
+    scroll-margin-top: 100px;
+}
+
+
+/* ========================================
+   2. CAPÇALERA I LOGOTIP
+======================================== */
+
+.cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 13, 25, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--vora);
+}
+
+.contenedor-cabecera {
+    width: min(1400px, 94%);
+    min-height: 82px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo a span {
+    font-size: 30px;
+}
+
+.logo a,
+.logo a span {
+    transition: transform 0.3s, color 0.3s;
+}
+
+.logo a:hover {
+    color: var(--morado-clar);
+}
+
+.logo a:hover span {
+    transform: rotate(-12deg) scale(1.1);
+}
+
+.navegacion ul {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navegacion a {
+    color: var(--text-secundari);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.25s;
+}
+
+.navegacion a:hover {
+    color: var(--cian);
+}
+
+
+/* ========================================
+   3. CERCADOR
+======================================== */
+
+.zona-buscador form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    background: var(--fons-secundari);
+    border: 1px solid #292f4b;
+    border-radius: 12px;
+    transition: border-color 0.25s;
+}
+
+.zona-buscador form:focus-within {
+    border-color: var(--morado);
+}
+
+.zona-buscador input {
+    width: 160px;
+    min-width: 0;
+    padding: 8px;
+    border: 0;
+    outline: none;
+    color: var(--blanc);
+    background: transparent;
+    font-size: 13px;
+}
+
+.zona-buscador input::placeholder {
+    color: #858da9;
+}
+
+.zona-buscador button {
+    width: 37px;
+    height: 37px;
+    border: 0;
+    border-radius: 9px;
+    color: white;
+    background: var(--morado);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+}
+
+.zona-buscador button:hover {
+    background: #a080ff;
+    transform: scale(1.05);
+}
+
+.oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ========================================
+   4. PORTADA PRINCIPAL
+======================================== */
+
+.hero {
+    position: relative;
+    min-height: 440px;
+    margin-top: 38px;
+    padding: 65px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(135, 87, 255, 0.35);
+    border-radius: 28px;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(70, 230, 224, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 100%,
+            rgba(135, 87, 255, 0.28),
+            transparent 45%
+        ),
+        linear-gradient(120deg, #191832, #11182d 65%, #172a40);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: -180px;
+    right: 15%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 35px rgba(255, 255, 255, 0.02),
+        0 0 0 70px rgba(255, 255, 255, 0.02);
+    z-index: -1;
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 650px;
+}
+
+.hero-etiqueta {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 7px 13px;
+    border: 1px solid rgba(70, 230, 224, 0.28);
+    border-radius: 30px;
+    background: rgba(70, 230, 224, 0.08);
+    color: var(--cian);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.hero h1 {
+    max-width: 650px;
+    margin-bottom: 22px;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+}
+
+.hero-contenido p {
+    max-width: 560px;
+    margin-bottom: 30px;
+    color: #b9c2dc;
+    font-size: 16px;
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.boton {
+    min-height: 48px;
+    padding: 12px 23px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 800;
+    transition:
+        transform 0.25s,
+        background 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+}
+
+.boton-principal {
+    color: white;
+    background: linear-gradient(135deg, #966cff, #7041f5);
+    box-shadow: 0 8px 24px rgba(112, 65, 245, 0.25);
+}
+
+.boton-principal:hover {
+    box-shadow: 0 10px 30px rgba(112, 65, 245, 0.4);
+}
+
+.boton-secundario {
+    color: var(--blanc);
+    border-color: #454467;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.boton-secundario:hover {
+    border-color: var(--morado-clar);
+    background: rgba(135, 87, 255, 0.1);
+}
+
+.hero-imagen {
+    position: relative;
+    width: 300px;
+    min-width: 230px;
+    height: 280px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.hero-imagen span {
+    width: 112px;
+    height: 112px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.055);
+    font-size: 53px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+    animation: flotar 4s ease-in-out infinite;
+}
+
+.hero-imagen span:nth-child(2),
+.hero-imagen span:nth-child(4) {
+    animation-delay: -2s;
+    transform: translateY(12px);
+}
+
+@keyframes flotar {
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+}
+
+
+/* ========================================
+   5. AVANTATGES
+======================================== */
+
+.ventajas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 30px 0 85px;
+}
+
+.ventaja {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 22px;
+    border: 1px solid var(--vora);
+    border-radius: 15px;
+    background: linear-gradient(145deg, #171c32, #111526);
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.ventaja:hover {
+    transform: translateY(-4px);
+    border-color: var(--morado);
+}
+
+.ventaja > span {
+    width: 49px;
+    height: 49px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: rgba(135, 87, 255, 0.13);
+    font-size: 25px;
+}
+
+.ventaja h3 {
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+.ventaja p {
+    color: var(--text-secundari);
+    font-size: 12px;
+}
+
+
+/* ========================================
+   6. TÍTOLS DE LES SECCIONS
+======================================== */
+
+.encabezado-seccion {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.subtitulo {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cian);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.encabezado-seccion h2 {
+    font-size: clamp(25px, 3vw, 33px);
+    line-height: 1.25;
+    letter-spacing: -0.7px;
+}
+
+.encabezado-seccion > p {
+    max-width: 330px;
+    color: var(--text-secundari);
+    font-size: 14px;
+}
+
+.enlace-seccion {
+    flex-shrink: 0;
+    color: var(--morado-clar);
+    font-size: 13px;
+    font-weight: 700;
+    transition: color 0.25s;
+}
+
+.enlace-seccion:hover {
+    color: var(--cian);
+}
+
+
+/* ========================================
+   7. TARGETES DE CATEGORIES
+======================================== */
+
+.rejilla-categorias {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tarjeta-categoria {
+    position: relative;
+    min-height: 180px;
+    padding: 22px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid var(--vora);
+    border-radius: var(--radi);
+    background: var(--targeta);
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        background 0.3s;
+}
+
+.tarjeta-categoria::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -60px;
+    right: -50px;
+    border-radius: 50%;
+    background: var(--color-categoria, var(--morado));
+    opacity: 0.12;
+    filter: blur(20px);
+    transition: opacity 0.3s;
+}
+
+.tarjeta-categoria:hover {
+    transform: translateY(-7px);
+    border-color: var(--color-categoria, var(--morado));
+    background: var(--targeta-hover);
+}
+
+.tarjeta-categoria:hover::before {
+    opacity: 0.35;
+}
+
+.categoria-accion {
+    --color-categoria: #ff6482;
+}
+
+.categoria-carreras {
+    --color-categoria: #ffb347;
+}
+
+.categoria-aventura {
+    --color-categoria: #46e6b0;
+}
+
+.categoria-puzzles {
+    --color-categoria: #a98bff;
+}
+
+.categoria-deportes {
+    --color-categoria: #46baff;
+}
+
+.categoria-estrategia {
+    --color-categoria: #f0d66d;
+}
+
+.icono-categoria {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    background: color-mix(
+        in srgb,
+        var(--color-categoria, var(--morado)) 13%,
+        transparent
+    );
+    font-size: 31px;
+    transition: transform 0.3s;
+}
+
+.tarjeta-categoria:hover .icono-categoria {
+    transform: scale(1.12) rotate(-5deg);
+}
+
+.tarjeta-categoria h3 {
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+.tarjeta-categoria p {
+    color: var(--text-secundari);
+    font-size: 11px;
+}
+
+
+/* ========================================
+   8. TARGETES DELS JOCS
+======================================== */
+
+.rejilla-juegos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta-juego {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--vora);
+    border-radius: var(--radi);
+    background: var(--targeta);
+    transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.tarjeta-juego:hover {
+    transform: translateY(-7px);
+    border-color: rgba(135, 87, 255, 0.65);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.enlace-juego {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagen-juego {
+    position: relative;
+    min-height: 175px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.imagen-juego::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        135deg,
+        var(--color-imagen),
+        #17172e
+    );
+    transition: transform 0.4s;
+}
+
+.tarjeta-juego:hover .imagen-juego::before {
+    transform: scale(1.08);
+}
+
+.imagen-carreras {
+    --color-imagen: #9d5429;
+}
+
+.imagen-aventura {
+    --color-imagen: #20785d;
+}
+
+.imagen-accion {
+    --color-imagen: #843451;
+}
+
+.imagen-puzzle {
+    --color-imagen: #51428e;
+}
+
+.imagen-espacial {
+    --color-imagen: #4c3692;
+}
+
+.imagen-deportes {
+    --color-imagen: #237c77;
+}
+
+.imagen-zombis {
+    --color-imagen: #4a7540;
+}
+
+.imagen-memoria {
+    --color-imagen: #8b407d;
+}
+
+.icono-juego {
+    font-size: 67px;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25));
+    transition: transform 0.35s;
+}
+
+.tarjeta-juego:hover .icono-juego {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.insignia {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 5px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(12, 14, 29, 0.78);
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.7px;
+}
+
+.insignia-nuevo {
+    background: #d5ffef;
+    color: #126448;
+}
+
+.datos-juego {
+    flex: 1;
+    padding: 19px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.datos-juego h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    transition: color 0.25s;
+}
+
+.tarjeta-juego:hover .datos-juego h3 {
+    color: var(--morado-clar);
+}
+
+.datos-juego > p {
+    margin-bottom: 19px;
+    color: var(--text-secundari);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.detalles-juego {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.detalles-juego span {
+    color: #b8c0da;
+    font-size: 10px;
+}
+
+
+/* ========================================
+   9. BÀNNER PROMOCIONAL
+======================================== */
+
+.banner {
+    position: relative;
+    margin: 85px 0;
+    padding: 45px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(70, 230, 224, 0.22);
+    border-radius: 23px;
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(70, 230, 224, 0.14),
+            transparent 28%
+        ),
+        linear-gradient(110deg, #29204e, #171d35);
+}
+
+.banner-contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+}
+
+.banner-contenido > span {
+    color: var(--cian);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+}
+
+.banner h2 {
+    margin: 13px 0;
+    font-size: clamp(25px, 3vw, 34px);
+    line-height: 1.25;
+}
+
+.banner p {
+    margin-bottom: 23px;
+    color: #c0c7df;
+    font-size: 14px;
+}
+
+.boton-claro {
+    color: #16152a;
+    background: var(--cian);
+}
+
+.boton-claro:hover {
+    background: #a0fff5;
+    box-shadow: 0 8px 25px rgba(70, 230, 224, 0.2);
+}
+
+.banner-icono {
+    flex-shrink: 0;
+    padding: 15px;
+    font-size: clamp(75px, 10vw, 125px);
+    filter: drop-shadow(0 0 25px rgba(70, 230, 224, 0.2));
+    animation: flotar 4s ease-in-out infinite;
+}
+
+
+/* ========================================
+   10. CATÀLEG COMPLET
+======================================== */
+
+.lista-catalogo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fila-juego {
+    min-width: 0;
+    padding: 17px 22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--vora);
+    border-radius: 13px;
+    background: var(--targeta);
+    scroll-margin-top: 100px;
+    transition:
+        transform 0.25s,
+        border-color 0.25s,
+        background 0.25s;
+}
+
+.fila-juego:hover {
+    transform: translateX(5px);
+    border-color: var(--morado);
+    background: var(--targeta-hover);
+}
+
+.fila-icono {
+    width: 53px;
+    height: 53px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: rgba(135, 87, 255, 0.13);
+    font-size: 27px;
+}
+
+.fila-juego > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.fila-juego h3 {
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.fila-juego p {
+    color: var(--text-secundari);
+    font-size: 12px;
+}
+
+.fila-categoria {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border: 1px solid rgba(135, 87, 255, 0.2);
+    border-radius: 20px;
+    background: rgba(135, 87, 255, 0.1);
+    color: var(--morado-clar);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   11. INFORMACIÓ SOBRE LES CATEGORIES
+======================================== */
+
+.rejilla-informacion {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.bloque-informacion {
+    padding: 25px;
+    border: 1px solid var(--vora);
+    border-radius: var(--radi);
+    background: linear-gradient(145deg, #171c32, #111526);
+    scroll-margin-top: 100px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.bloque-informacion:hover {
+    transform: translateY(-5px);
+    border-color: var(--morado);
+}
+
+.bloque-informacion > span {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: rgba(135, 87, 255, 0.13);
+    font-size: 25px;
+}
+
+.bloque-informacion h3 {
+    margin-bottom: 9px;
+    font-size: 16px;
+}
+
+.bloque-informacion p {
+    color: var(--text-secundari);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   12. PEU DE PÀGINA
+======================================== */
+
+.pie-pagina {
+    margin-top: 100px;
+    padding: 55px 4% 0;
+    border-top: 1px solid var(--vora);
+    background: #090b14;
+}
+
+.contenido-footer {
+    width: min(var(--amplada), 100%);
+    margin: 0 auto;
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.logo-footer {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--morado-clar);
+}
+
+.footer-marca > p {
+    max-width: 280px;
+    color: var(--text-secundari);
+    font-size: 13px;
+}
+
+.footer-enlaces h3,
+.footer-social h3 {
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.footer-enlaces ul {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.footer-enlaces a {
+    color: var(--text-secundari);
+    font-size: 12px;
+    transition: color 0.25s;
+}
+
+.footer-enlaces a:hover {
+    color: var(--cian);
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.redes-sociales a {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--vora);
+    border-radius: 11px;
+    background: var(--targeta);
+    font-size: 18px;
+    transition:
+        transform 0.25s,
+        background 0.25s,
+        border-color 0.25s;
+}
+
+.redes-sociales a:hover {
+    transform: translateY(-4px);
+    border-color: var(--morado);
+    background: #292047;
+}
+
+.footer-social > p {
+    color: var(--text-secundari);
+    font-size: 12px;
+}
+
+.footer-inferior {
+    width: min(var(--amplada), 100%);
+    min-height: 65px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inferior p,
+.footer-inferior a {
+    color: #858da9;
+    font-size: 11px;
+}
+
+.footer-inferior a {
+    transition: color 0.25s;
+}
+
+.footer-inferior a:hover {
+    color: var(--cian);
+}
+
+
+/* ========================================
+   13. TAULETES
+======================================== */
+
+@media (max-width: 1100px) {
+    .contenedor-cabecera {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 16px 0;
+        gap: 18px 25px;
+    }
+
+    .rejilla-categorias {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .rejilla-juegos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contenido-footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-imagen {
+        width: 240px;
+        min-width: 200px;
+    }
+
+    .hero-imagen span {
+        width: 90px;
+        height: 90px;
+        font-size: 43px;
+    }
+}
+
+
+/* ========================================
+   14. MÒBILS
+======================================== */
+
+@media (max-width: 650px) {
+    .cabecera {
+        position: relative;
+    }
+
+    .contenedor-cabecera {
+        width: 92%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo a {
+        font-size: 25px;
+    }
+
+    .navegacion {
+        width: 100%;
+    }
+
+    .navegacion ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    .navegacion a {
+        font-size: 12px;
+    }
+
+    .zona-buscador,
+    .zona-buscador form {
+        width: 100%;
+    }
+
+    .zona-buscador input {
+        flex: 1;
+        width: 100%;
+    }
+
+    main {
+        width: 92%;
+    }
+
+    .seccion {
+        margin: 60px 0;
+        scroll-margin-top: 20px;
+    }
+
+    .hero {
+        margin-top: 22px;
+        min-height: auto;
+        padding: 38px 23px;
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 21px;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: clamp(33px, 9vw, 45px);
+        letter-spacing: -1px;
+    }
+
+    .hero-contenido p {
+        font-size: 14px;
+    }
+
+    .hero-etiqueta {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .hero-botones {
+        width: 100%;
+    }
+
+    .hero-botones .boton {
+        flex: 1;
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .hero-imagen {
+        width: 100%;
+        height: 155px;
+        min-width: 0;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 9px;
+    }
+
+    .hero-imagen span {
+        width: 100%;
+        max-width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        font-size: 32px;
+    }
+
+    .ventajas {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 25px 0 60px;
+    }
+
+    .ventaja {
+        padding: 17px;
+    }
+
+    .encabezado-seccion {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .encabezado-seccion h2 {
+        font-size: 26px;
+    }
+
+    .encabezado-seccion > p {
+        font-size: 13px;
+    }
+
+    .rejilla-categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .tarjeta-categoria {
+        min-height: 155px;
+        padding: 18px 8px;
+    }
+
+    .icono-categoria {
+        width: 52px;
+        height: 52px;
+        font-size: 27px;
+    }
+
+    .rejilla-juegos {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .imagen-juego {
+        min-height: 190px;
+    }
+
+    .datos-juego {
+        padding: 18px;
+    }
+
+    .banner {
+        margin: 60px 0;
+        padding: 30px 23px;
+    }
+
+    .banner-icono {
+        display: none;
+    }
+
+    .banner h2 {
+        font-size: 27px;
+    }
+
+    .fila-juego {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .fila-icono {
+        width: 43px;
+        height: 43px;
+        font-size: 23px;
+    }
+
+    .fila-juego h3 {
+        font-size: 13px;
+    }
+
+    .fila-juego p {
+        font-size: 11px;
+    }
+
+    .fila-categoria {
+        padding: 5px 8px;
+        font-size: 9px;
+    }
+
+    .rejilla-informacion {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    .bloque-informacion {
+        padding: 21px;
+    }
+
+    .pie-pagina {
+        margin-top: 65px;
+        padding: 40px 5% 0;
+    }
+
+    .contenido-footer {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+    }
+
+    .footer-inferior {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+
+/* ========================================
+   15. PANTALLES MOLT PETITES
+======================================== */
+
+@media (max-width: 380px) {
+    .hero-botones {
+        flex-direction: column;
+    }
+
+    .hero-botones .boton {
+        width: 100%;
+    }
+
+    .fila-juego {
+        flex-wrap: wrap;
+    }
+
+    .fila-juego > div {
+        flex-basis: calc(100% - 60px);
+    }
+
+    .fila-categoria {
+        margin-left: 55px;
+    }
+
+    .contenido-footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ========================================
+   16. ACCESSIBILITAT I ANIMACIONS
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
